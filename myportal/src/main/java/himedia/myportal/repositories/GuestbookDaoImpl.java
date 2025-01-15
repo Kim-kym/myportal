@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import himedia.myportal.exceptions.GuestbookDaoException;
 import himedia.myportal.repositories.vo.GuestbookVo;
 
 @Repository
@@ -16,14 +17,22 @@ public class GuestbookDaoImpl
 	
 	@Override
 	public List<GuestbookVo> selectAll() {
-		
-		return null;
+		List<GuestbookVo> list = sqlSession.selectList("guestbook.selectAll");
+		return list;
 	}
 
 	@Override
 	public int insert(GuestbookVo vo) {
-		
-		return 0;
+		int insertedCount = 0;
+		try {
+			insertedCount = 
+					sqlSession.insert("guestbook.insert", vo);
+			//	PersistenceException or SQLException
+			//	뭔가 처리가 잘못되었을 떄 or SQL문이 잘못되었을 때 
+		} catch (Exception e) {
+			throw new GuestbookDaoException("방명록 기록중 에러 발생", vo);
+		}
+		return insertedCount;
 	}
 
 	@Override
