@@ -32,7 +32,7 @@
 				<property name="supportedMediaTypes">
 				<list>
 					<!-- Map 타입을 JSON으로 변환해주는 Converter -->
-					<value>application.json;charset=UTF-8</value>
+					<value>application/json;charset=UTF-8</value>
 				</list>
 				</property>
 			</bean>
