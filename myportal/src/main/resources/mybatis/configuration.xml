@@ -7,9 +7,15 @@
 	<typeAliases>
 		<typeAlias alias="guestbookVo"
 			type="himedia.myportal.repositories.vo.GuestbookVo" />
+		<typeAlias alias="boardVo"
+			type="himedia.myportal.repositories.vo.BoardVo" />
+		<typeAlias alias="userVo"
+			type="himedia.myportal.repositories.vo.UserVo" />
 	</typeAliases>
 	<!-- Mapper 등록 -->
 	<mappers>
+		<mapper resource="mybatis/mappers/board.xml" />
 		<mapper resource="mybatis/mappers/guestbook.xml" />
+		<mapper resource="mybatis/mappers/user.xml" />
 	</mappers>
 </configuration>
