@@ -29,7 +29,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean isAuthenticated(HttpServletRequest request) {
-		
 		return false;
 	}
 
