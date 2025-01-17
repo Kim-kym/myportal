@@ -31,14 +31,12 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public boolean update(BoardVo boardVo) {
-		
-		return false;
+		return 1 == boardDaoImpl.update(boardVo);
 	}
 
 	@Override
-	public boolean deleteByNoAndUserNo(Integer no, Long userNo) {
-		
-		return false;
+	public boolean deleteByNoAndUserNo(Integer no, Integer userNo) {
+		return 1 == boardDaoImpl.delete(no, userNo);
 	}
 
 }
