@@ -76,4 +76,20 @@
 			<bean class="himedia.myportal.interceptors.LogoutInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
+	
+	<!-- MultipartResolver -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
+	<!-- Resource Mappong -->
+	<mvc:resources mapping="/upload-images/**"
+		location="file:c:/uploads/" />	
+		
+		<!-- MessageSource -->
+		<bean id="messageSource"
+			class="org.springframework.context.support.ResourceBundleMessageSource">
+			<property name="basenames"
+				value="messages/messages_ko" />
+			<property name="defaultEncoding"
+				value="UTF-8" />
+		</bean>
 </beans>

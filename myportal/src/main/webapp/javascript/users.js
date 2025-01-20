@@ -45,7 +45,7 @@ window.addEventListener("load", (event) => {
 		//	기본 이벤트 제거 
 		event.preventDefault();
 		const frm = event.target;
-		
+		/*
 		if (frm.name.value.trim().length === 0) {
 			alert("이름을 입력하세요.");
 			frm.name.focus();
@@ -63,7 +63,7 @@ window.addEventListener("load", (event) => {
 			frm.password.focus();
 			return;
 		}
-		
+		*/
 		if (frm.emailCheck.value !== 'y') {
 			alert("이메일 중복 확인을 해주세요.");
 			return;
@@ -71,4 +71,5 @@ window.addEventListener("load", (event) => {
 		
 		frm.submit();
 	});
+	
 })

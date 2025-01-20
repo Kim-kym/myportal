@@ -33,7 +33,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 			logger.debug("인증되지 않은 사용자 -> 로그인 페이지로 리다이렉트");
 			response.sendRedirect(
 					request.getContextPath() + "/users/login");
-			return false;	//	요청을 뒤롭 보내는 것을 중단함
+			return false;	//	요청을 뒤로 보내는 것을 중단함
 		}
 	
 	}

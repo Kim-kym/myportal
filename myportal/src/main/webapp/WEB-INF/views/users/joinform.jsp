@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"
 	prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags"
+	prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form"
+	prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,36 +30,58 @@
       
 	<h1>회원 가입</h1>
 	
-	<form
+	<form:form
+		modelAttribute="userVo"
 		id="join-form"
 		name="registerForm" 
-		action="<c:url value="/users/join" />"
-		method="POST"
-		>
+		action="${pageContext.servletContext.contextPath }/users/join"
+		method="POST">
 		<input type="hidden" name="a" value="join">
 		
 		<label for="name">이름</label>
-		<input name="name" type="text" placeholder="이름을 입력하십시오"><br>
-	
+		<!-- input name="name" type="text" placeholder="이름을 입력하십시오" -->
+		<form:input path="name" />
+		<br>
+		<form:errors path="name" cssClass="error" />
+		<%-- srping:hasBindErrors name="userVo">
+			<c:if test="${errors.hasFieldErrors('name') }">
+				<strong style="color:red">
+				<spring:message code="${errors.getFieldError('name').codes[0] }" 
+					text="${errors.getFieldError('name').defaultMessage }" />
+				</strong>
+				<br />
+			</c:if>
+		</srping:hasBindErrors --%>
+		
 		<label for="password">비밀번호</label>
-		<input name="password" type="password" placeholder="비밀번호를 입력하십시오"><br>
-	
+		<form:input type="password" path="password" />
+		<form:errors path="password" cssClass="error" />
+		<%-- input name="password" type="password" placeholder="비밀번호를 입력하십시오"><br>
+		<spring:message code="${errors.getFieldError('password').codes[0] }" 
+					text="${errors.getFieldError('password').defaultMessage }" --%>
+		<br />
 		<label for="email">이메일</label>
-		<input type="text" name="email" placeholder="이메일을 입력하십시오."><br>
-	
+		<%--input type="text" name="email" placeholder="이메일을 입력하십시오."--%>
+		<form:input path="email" />
+		<br>
 		<input id="check-email"
 			type="button"
 			data-target="<c:url value="/users/checkEmail" />"
 			value="id 중복 체크">
+		<form:errors path="email" cssClass="error" />
 		<input type="hidden" name="emailCheck" value="n">
+		<%-- spring:message code="${errors.getFieldError('email').codes[0] }" 
+					text="${errors.getFieldError('email').defaultMessage }" --%>
 		<br />
-		
 		<label for="gender">성별</label>
-		<input type="radio" name="gender" value="M" checked>남성</radio>
-		<input type="radio" name="gender" value="F">여성</radio><br>
+		<!-- input type="radio" name="gender" value="M" checked>남성</radio -->
+		<!-- input type="radio" name="gender" value="F">여성</radio-->
+		<form:radiobutton path="gender" value="M" label="남성" />
+		<form:radiobutton path="gender" value="F" label="여성" />
+		<br />
 		<input type="submit" value="전송"> 
 	
-	</form>
+	</form:form>
 	</div>
 	</div>
 	
